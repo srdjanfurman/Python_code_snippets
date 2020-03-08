@@ -1,4 +1,6 @@
+.idea
 .project
 .pydevproject
 .settings
+*.pyc
 installed_python_packages.txt

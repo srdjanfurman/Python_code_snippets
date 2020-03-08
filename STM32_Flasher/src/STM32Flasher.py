@@ -1,22 +1,26 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
-'''
+"""
 Created on Dec 23, 2015
 
 @author: sfurman
 
 
 GUI application for programming the STM32 MCUs.
-'''
+
+Prerequisites:
+  st-flash - Flash binary files to the STM32 device.
+"""
+
+from subprocess import Popen, PIPE
 
 import wx
-from subprocess import Popen, PIPE
 from wx.lib.filebrowsebutton import FileBrowseButton
 
 
 class MyFrame(wx.Frame):
-    def __init__(self, parent, apptitle, appsize):
-        wx.Frame.__init__(self, parent, wx.ID_ANY, apptitle, size=appsize)
+    def __init__(self, parent, app_title, app_size):
+        wx.Frame.__init__(self, parent, wx.ID_ANY, app_title, size=app_size)
 
         panel = wx.Panel(self)
 
@@ -27,7 +31,7 @@ class MyFrame(wx.Frame):
                                               fileMask="*.bin")
         # Explain flash_button.
         self.flash_button = wx.Button(panel, wx.ID_ANY, "Flash")
-        self.flash_button.Bind(wx.EVT_BUTTON, self.onFlash)
+        self.flash_button.Bind(wx.EVT_BUTTON, self.on_flash)
 
         self.text_ctrl = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
         output_txt = "st-flash says:\n"
@@ -47,7 +51,7 @@ class MyFrame(wx.Frame):
         # Vertical sizer space contains horizontal sizer space, so set them.
         panel.SetSizer(vertical_sizer)
 
-    def onFlash(self, evt):
+    def on_flash(self, evt):
         filename = self.browse_button.GetValue()
         if filename:
             p = Popen(
@@ -63,8 +67,8 @@ class MyFrame(wx.Frame):
 
 app = wx.App(0)
 # Create a MyFrame instance and show the frame.
-apptitle = "STM32Flasher"
+appTitle = "STM32Flasher"
 width = 1000
 height = 400
-MyFrame(None, apptitle, (width, height)).Show()
+MyFrame(None, appTitle, (width, height)).Show()
 app.MainLoop()

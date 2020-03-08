@@ -1,11 +1,19 @@
-'''
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
 Created on Nov 6, 2015
 
 @author: sfurman
 
 
-The program finds the number of messages and percentage for every domain in the MBOX file.
-'''
+The program finds the number of messages and percentages for every domain in the MBOX file.
+
+Example usage
+  Run script:
+  python main_fun.py mbox_file
+  Watch the output.
+"""
 
 import io
 import re
@@ -61,5 +69,4 @@ if __name__ == '__main__':
         print("Usage: python %s <mbox_file_name>" % sys.argv[0])
         sys.exit(0)
     else:
-        mbox_file = sys.argv[1]
-        mbox_read(mbox_file)
+        mbox_read(sys.argv[1])
