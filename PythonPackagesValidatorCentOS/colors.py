@@ -5,6 +5,7 @@ Created on Sep 15, 2014
 """
 
 
+# Terminal color palette.
 class Color(object):
     def __init__(self):
         pass
@@ -30,40 +31,39 @@ class Color(object):
     BACKGROUND_CYAN = '\033[46m'  # light blue
     BACKGROUND_WHITE = '\033[47m'  # grey
 
-# The only ANSI sequences that colorama converts into win32 calls are:
-#
-# # TEXT:
-# ESC [ 0 m       # reset all (colors and brightness)
-# ESC [ 1 m       # bright
-# ESC [ 2 m       # dim (looks same as normal brightness)
-# ESC [ 22 m      # normal brightness
-#
-# # FOREGROUND:
-# ESC [ 30 m      # black
-# ESC [ 31 m      # red
-# ESC [ 32 m      # green
-# ESC [ 33 m      # yellow
-# ESC [ 34 m      # blue
-# ESC [ 35 m      # magenta
-# ESC [ 36 m      # cyan
-# ESC [ 37 m      # white
-# ESC [ 39 m      # reset
-#
-# # BACKGROUND:
-# ESC [ 40 m      # black
-# ESC [ 41 m      # red
-# ESC [ 42 m      # green
-# ESC [ 43 m      # yellow
-# ESC [ 44 m      # blue
-# ESC [ 45 m      # magenta
-# ESC [ 46 m      # cyan
-# ESC [ 47 m      # white
-# ESC [ 49 m      # reset
-#
-# # cursor positioning
-# ESC [ y;x H     # position cursor at x across, y down
-#
-# # clear the screen
-# ESC [ mode J    # clear the screen. Only mode 2 (clear entire screen)
-#                 # is supported. It should be easy to add other modes,
-#                 # let me know if that would be useful.
+# ANSI sequences that 'colorama' converts into win32 calls.
+
+# TEXT:
+# ESC [ 0 m       # Reset all (colors and brightness)
+# ESC [ 1 m       # Bright
+# ESC [ 2 m       # Dim (looks same as normal brightness)
+# ESC [ 22 m      # Normal brightness
+
+# FOREGROUND:
+# ESC [ 30 m      # Black
+# ESC [ 31 m      # Red
+# ESC [ 32 m      # Green
+# ESC [ 33 m      # Yellow
+# ESC [ 34 m      # Blue
+# ESC [ 35 m      # Magenta
+# ESC [ 36 m      # Cyan
+# ESC [ 37 m      # White
+# ESC [ 39 m      # Reset
+
+# BACKGROUND:
+# ESC [ 40 m      # Black
+# ESC [ 41 m      # Red
+# ESC [ 42 m      # Green
+# ESC [ 43 m      # Yellow
+# ESC [ 44 m      # Blue
+# ESC [ 45 m      # Magenta
+# ESC [ 46 m      # Cyan
+# ESC [ 47 m      # White
+# ESC [ 49 m      # Reset
+
+# Cursor positioning:
+# ESC [ y;x H     # Position cursor at x across, y down.
+
+# Clear the screen:
+# ESC [ mode J    # Clear the screen. Only mode 2 (clear entire screen)
+#                   is supported.
