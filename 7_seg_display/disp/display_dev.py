@@ -59,7 +59,7 @@ class Display:
                         const.POS_FIRST_ROW[0] + y_0 * const.LENGTH,
                         const.POS_FIRST_ROW[idx + 1] + x_1 * const.LENGTH,
                         const.POS_FIRST_ROW[0] + y_1 * const.LENGTH,
-                        fill="red", width=const.WIDTH, state='hidden'))
+                        fill="red", width=const.WIDTH, state='hidden', arrow=tk.BOTH, arrowshape=(8, 10, 0)))
 
                 elif 7 < idx < const.MAX_DIGITS - 16:  # 8-15
                     self.__digit[idx].append(self.__canvas.create_line(
@@ -67,7 +67,7 @@ class Display:
                         const.POS_SECOND_ROW[0] + y_0 * const.LENGTH,
                         const.POS_SECOND_ROW[idx - 8 + 1] + x_1 * const.LENGTH,
                         const.POS_SECOND_ROW[0] + y_1 * const.LENGTH,
-                        fill="green", width=const.WIDTH, state='hidden'))
+                        fill="green", width=const.WIDTH, state='hidden', arrow=tk.BOTH, arrowshape=(8, 10, 0)))
 
                 elif 15 < idx < const.MAX_DIGITS - 8:  # 16-23
                     self.__digit[idx].append(self.__canvas.create_line(
@@ -75,7 +75,7 @@ class Display:
                         const.POS_THIRD_ROW[0] + y_0 * const.LENGTH,
                         const.POS_THIRD_ROW[idx - 16 + 1] + x_1 * const.LENGTH,
                         const.POS_THIRD_ROW[0] + y_1 * const.LENGTH,
-                        fill="blue", width=const.WIDTH, state='hidden'))
+                        fill="blue", width=const.WIDTH, state='hidden', arrow=tk.BOTH, arrowshape=(8, 10, 0)))
 
                 elif 23 < idx < const.MAX_DIGITS:  # 24-31
                     self.__digit[idx].append(self.__canvas.create_line(
@@ -83,7 +83,7 @@ class Display:
                         const.POS_FOURTH_ROW[0] + y_0 * const.LENGTH,
                         const.POS_FOURTH_ROW[idx - 24 + 1] + x_1 * const.LENGTH,
                         const.POS_FOURTH_ROW[0] + y_1 * const.LENGTH,
-                        fill="yellow", width=const.WIDTH, state='hidden'))
+                        fill="yellow", width=const.WIDTH, state='hidden', arrow=tk.BOTH, arrowshape=(8, 10, 0)))
                 else:
                     pass
 
