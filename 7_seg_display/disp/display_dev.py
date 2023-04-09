@@ -10,8 +10,9 @@ import sys
 import time
 import tkinter as tk
 
-from common import const
-from common.const import CHs, DISP_SPEED, START, STOP, STEP, TEST_LST
+from common.const import CHs, DISP_SPEED, START, STOP, STEP, TEST_LST, DIGITS, \
+    MAX_DIGITS, POS_FIRST_ROW, POS_SECOND_ROW, POS_THIRD_ROW, POS_FOURTH_ROW, \
+    LENGTH, SEGMENTS, WIDTH
 from common.utils import generate_test_data, generate_test_data_dyn
 
 
@@ -19,8 +20,8 @@ class Display:
     """
     Class Display.
 
-    Order 7 digit clockwise from top left, with crossbar last.
-    Coordinates of each digit are (x0, y0, x1, y1)
+    Generate 7 digit clockwise from top left, with crossbar last.
+    Coordinates of each digit are (x_0, y_0, x_1, y_1)
     given as OFFSETS from top left measured in digit lengths.
     """
 
@@ -28,7 +29,7 @@ class Display:
         self.__canvas = canvas
 
         # Digit is one disp module.
-        self.__digit = [[] for _ in range(const.MAX_DIGITS)]
+        self.__digit = [[] for _ in range(MAX_DIGITS)]
 
         # Number is 4 digits.
         self.__number = [[] for _ in range(8)]
@@ -53,47 +54,47 @@ class Display:
                 Define maximum digits (4 digit number).
                 """
 
-                if idx < const.MAX_DIGITS - 24:  # 0-7
+                if idx < MAX_DIGITS - 24:  # 0-7
                     self.__digit[idx].append(self.__canvas.create_line(
-                        const.POS_FIRST_ROW[idx + 1] + x_0 * const.LENGTH,
-                        const.POS_FIRST_ROW[0] + y_0 * const.LENGTH,
-                        const.POS_FIRST_ROW[idx + 1] + x_1 * const.LENGTH,
-                        const.POS_FIRST_ROW[0] + y_1 * const.LENGTH,
-                        fill="red", width=const.WIDTH, state='hidden',
+                        POS_FIRST_ROW[idx + 1] + x_0 * LENGTH,
+                        POS_FIRST_ROW[0] + y_0 * LENGTH,
+                        POS_FIRST_ROW[idx + 1] + x_1 * LENGTH,
+                        POS_FIRST_ROW[0] + y_1 * LENGTH,
+                        fill="red", width=WIDTH, state='hidden',
                         arrow=tk.BOTH, arrowshape=(8, 9, 0)))
 
-                elif 7 < idx < const.MAX_DIGITS - 16:  # 8-15
+                elif 7 < idx < MAX_DIGITS - 16:  # 8-15
                     self.__digit[idx].append(self.__canvas.create_line(
-                        const.POS_SECOND_ROW[idx - 8 + 1] + x_0 * const.LENGTH,
-                        const.POS_SECOND_ROW[0] + y_0 * const.LENGTH,
-                        const.POS_SECOND_ROW[idx - 8 + 1] + x_1 * const.LENGTH,
-                        const.POS_SECOND_ROW[0] + y_1 * const.LENGTH,
-                        fill="green", width=const.WIDTH, state='hidden',
+                        POS_SECOND_ROW[idx - 8 + 1] + x_0 * LENGTH,
+                        POS_SECOND_ROW[0] + y_0 * LENGTH,
+                        POS_SECOND_ROW[idx - 8 + 1] + x_1 * LENGTH,
+                        POS_SECOND_ROW[0] + y_1 * LENGTH,
+                        fill="green", width=WIDTH, state='hidden',
                         arrow=tk.BOTH, arrowshape=(8, 9, 0)))
 
-                elif 15 < idx < const.MAX_DIGITS - 8:  # 16-23
+                elif 15 < idx < MAX_DIGITS - 8:  # 16-23
                     self.__digit[idx].append(self.__canvas.create_line(
-                        const.POS_THIRD_ROW[idx - 16 + 1] + x_0 * const.LENGTH,
-                        const.POS_THIRD_ROW[0] + y_0 * const.LENGTH,
-                        const.POS_THIRD_ROW[idx - 16 + 1] + x_1 * const.LENGTH,
-                        const.POS_THIRD_ROW[0] + y_1 * const.LENGTH,
-                        fill="blue", width=const.WIDTH, state='hidden',
+                        POS_THIRD_ROW[idx - 16 + 1] + x_0 * LENGTH,
+                        POS_THIRD_ROW[0] + y_0 * LENGTH,
+                        POS_THIRD_ROW[idx - 16 + 1] + x_1 * LENGTH,
+                        POS_THIRD_ROW[0] + y_1 * LENGTH,
+                        fill="blue", width=WIDTH, state='hidden',
                         arrow=tk.BOTH, arrowshape=(8, 9, 0)))
 
-                elif 23 < idx < const.MAX_DIGITS:  # 24-31
+                elif 23 < idx < MAX_DIGITS:  # 24-31
                     self.__digit[idx].append(self.__canvas.create_line(
-                        const.POS_FOURTH_ROW[idx - 24 + 1] + x_0 * const.LENGTH,
-                        const.POS_FOURTH_ROW[0] + y_0 * const.LENGTH,
-                        const.POS_FOURTH_ROW[idx - 24 + 1] + x_1 * const.LENGTH,
-                        const.POS_FOURTH_ROW[0] + y_1 * const.LENGTH,
-                        fill="yellow", width=const.WIDTH, state='hidden',
+                        POS_FOURTH_ROW[idx - 24 + 1] + x_0 * LENGTH,
+                        POS_FOURTH_ROW[0] + y_0 * LENGTH,
+                        POS_FOURTH_ROW[idx - 24 + 1] + x_1 * LENGTH,
+                        POS_FOURTH_ROW[0] + y_1 * LENGTH,
+                        fill="yellow", width=WIDTH, state='hidden',
                         arrow=tk.BOTH, arrowshape=(8, 9, 0)))
                 else:
                     pass
 
-            _ = [max_digits(idx) for idx in range(const.MAX_DIGITS)]
+            _ = [max_digits(idx) for idx in range(MAX_DIGITS)]
 
-        _ = [segments(x0, y0, x1, y1) for x0, y0, x1, y1 in const.SEGMENTS]
+        _ = [segments(x0, y0, x1, y1) for x0, y0, x1, y1 in SEGMENTS]
 
         self.__number[0].extend([self.__digit[0]] + [self.__digit[1]] +
                                 [self.__digit[2]] + [self.__digit[3]])
@@ -132,20 +133,14 @@ class Display:
             """
 
             if result_int == 10000:
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')
-                     for iid, on in zip(digit[0], const.DIGITS[5])]  # S
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')
-                     for iid, on in zip(digit[1], const.DIGITS[17])]  # t
-
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')
-                     for iid, on in zip(digit[2], const.DIGITS[18])]  # o
-
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')
-                     for iid, on in zip(digit[3], const.DIGITS[19])]  # P
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # S
+                if on else 'hidden') for iid, on in zip(digit[0], DIGITS[5])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # t
+                if on else 'hidden') for iid, on in zip(digit[1], DIGITS[17])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # o
+                if on else 'hidden') for iid, on in zip(digit[2], DIGITS[18])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # P
+                if on else 'hidden') for iid, on in zip(digit[3], DIGITS[19])]
 
         def err_message() -> None:
             """
@@ -154,27 +149,24 @@ class Display:
             """
 
             if result_int in (12000, 12001):
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')  # E
-                     for iid, on in zip(digit[0], const.DIGITS[15])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # E
+                if on else 'hidden') for iid, on in zip(digit[0], DIGITS[15])]
 
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')  # r
-                     for iid, on in zip(digit[1], const.DIGITS[20])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # r
+                if on else 'hidden') for iid, on in zip(digit[1], DIGITS[20])]
 
-                _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')  # r
-                     for iid, on in zip(digit[2], const.DIGITS[20])]
+                _ = [self.__canvas.itemconfigure(iid, state='normal'  # r
+                if on else 'hidden') for iid, on in zip(digit[2], DIGITS[20])]
 
                 if result_int == 12000:
-                    _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 0
-                         for iid, on in zip(digit[3], const.DIGITS[0])]
+                    _ = [self.__canvas.itemconfigure(iid, state='normal'  # 0
+                    if on else 'hidden') for iid, on in zip(digit[3], DIGITS[0])
+                         ]
 
                 if result_int == 12001:
-                    _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 1
-                         for iid, on in zip(digit[3], const.DIGITS[1])]
+                    _ = [self.__canvas.itemconfigure(iid, state='normal'  # 1
+                    if on else 'hidden') for iid, on in zip(digit[3], DIGITS[1])
+                         ]
 
         def positive_numbers() -> None:
             """
@@ -182,83 +174,80 @@ class Display:
 
             """
 
-            if result_int < 10000:
+            if result_int < 10000:  # 0-9
                 _ = [self.__canvas.itemconfigure(iid, state='normal'
                 if on else 'hidden')
-                     for iid, on in zip(digit[0],
-                                        const.DIGITS[int(result_str[:1])])]  # 0-9
+                     for iid, on in zip(digit[0], DIGITS[int(result_str[:1])])]
 
-                if result_int > 9:
+                if result_int > 9:  # 10-99
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
                     if on else 'hidden')
                          for iid, on in zip(digit[1],
-                                            const.DIGITS[int(result_str[1:2])])]  # 10-99
+                                            DIGITS[int(result_str[1:2])])]
                 else:
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
                     if on else 'hidden')
-                         for iid, on in zip(digit[1],
-                                            const.DIGITS[10])]
+                         for iid, on in zip(digit[1], DIGITS[10])]
 
-                if result_int > 99:
-                    _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 100-999
-                         for iid, on in zip(digit[2],
-                                            const.DIGITS[int(result_str[2:3])])]
-                else:
+                if result_int > 99:  # 100-999
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
                     if on else 'hidden')
                          for iid, on in zip(digit[2],
-                                            const.DIGITS[10])]
-
-                if result_int > 999:
+                                            DIGITS[int(result_str[2:3])])]
+                else:
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 1000-9999
+                    if on else 'hidden')
+                         for iid, on in zip(digit[2], DIGITS[10])]
+
+                if result_int > 999:  # 1000-9999
+                    _ = [self.__canvas.itemconfigure(iid, state='normal'
+                    if on else 'hidden')
                          for iid, on in zip(digit[3],
-                                            const.DIGITS[int(result_str[3:4])])]
+                                            DIGITS[int(result_str[3:4])])]
                 else:
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')
-                         for iid, on in zip(digit[3], const.DIGITS[10])]
+                    if on else 'hidden') for iid, on in zip(digit[3],
+                                                            DIGITS[10])]
 
         def negative_numbers() -> None:
             """
             Negative numbers -1 ... -999.
             """
 
-            if 10000 < result_int < 11000:
+            if 10000 < result_int < 11000:  # -
                 _ = [self.__canvas.itemconfigure(iid, state='normal'
-                if on else 'hidden')  # -
-                     for iid, on in zip(digit[0], const.DIGITS[21])]
+                if on else 'hidden')
+                     for iid, on in zip(digit[0], DIGITS[21])]
 
-                if result_int > 10000:
+                if result_int > 10000:  # 10001-10009
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 10001-10009
+                    if on else 'hidden')
                          for iid, on in zip(digit[3],
-                                            const.DIGITS[int(result_str[4])])]
+                                            DIGITS[int(result_str[4])])]
                 # else:
                 #     _ = [self.__canvas.itemconfigure(iid, state='normal'
                 #     if on else 'hidden')
-                #          for iid, on in zip(digit[3], const.DIGITS[10])]
+                #          for iid, on in zip(digit[3], DIGITS[10])]
 
-                if result_int > 10009:
+                if result_int > 10009:  # 10010-10099
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 10010-10099
+                    if on else 'hidden')
                          for iid, on in zip(digit[2],
-                                            const.DIGITS[int(result_str[3])])]
+                                            DIGITS[int(result_str[3])])]
                 else:
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
                     if on else 'hidden')
-                         for iid, on in zip(digit[2], const.DIGITS[10])]
+                         for iid, on in zip(digit[2], DIGITS[10])]
 
-                if result_int > 10099:
+                if result_int > 10099:  # 10100-10999
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
-                    if on else 'hidden')  # 10100-10999
+                    if on else 'hidden')
                          for iid, on in zip(digit[1],
-                                            const.DIGITS[int(result_str[2])])]
+                                            DIGITS[int(result_str[2])])]
                 else:
                     _ = [self.__canvas.itemconfigure(iid, state='normal'
                     if on else 'hidden')
-                         for iid, on in zip(digit[1], const.DIGITS[10])]
+                         for iid, on in zip(digit[1], DIGITS[10])]
 
         stop_message()
         err_message()
@@ -312,7 +301,7 @@ class Display:
                 elif chan in zero_ch_lst:
                     self.__create_content('0', self.__number[idx])
 
-            _ = [channels(idx, ch) for idx, ch in enumerate(const.CHs)]
+            _ = [channels(idx, ch) for idx, ch in enumerate(CHs)]
 
         write()
 
