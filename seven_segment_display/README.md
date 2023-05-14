@@ -42,12 +42,12 @@ The purpose of this script is to emulate the seven segment LED display panel.
 
 - Control characters table
 
-|      | CH1 | CH2 |
+|      | Ch1 | Ch2 |
 |------|-----|-----|
-| ADC1 | [   | ]   |
-| ADC2 | (   | )   |
-| ADC3 | {   | }   |
-| ADC4 | ;   | :   |
+| Val1 | [   | ]   |
+| Val2 | (   | )   |
+| Val3 | {   | }   |
+| Val4 | ;   | :   |
 
 ### Output
 

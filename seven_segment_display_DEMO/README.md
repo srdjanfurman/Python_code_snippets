@@ -1,12 +1,12 @@
-# Emulator of the 7 segment LED display
+# Emulator of the seven segment LED display panel DEMO
 
 ## Description
 
-The purpose of this script is to emulate the 7 segment LED display panel.
+The purpose of this script is to emulate the seven segment LED display panel.
 
 ## Explanation
 
-- The 7 segment LED display panel contains eight 4-digit displays.
+- The seven segment LED display panel contains eight 4-digit displays.
 
 - Panel displays table
 
@@ -32,7 +32,7 @@ The purpose of this script is to emulate the 7 segment LED display panel.
 ### Input
 
 - Serial device
-    - Set value for 'dev' constant in a 7_seg_display/const.py file.
+    - Set value for 'DEV' constant in a seven_segment_display_DEMO/const/consts.py file.
 
 - Each number or text has its unique control character (prefix) which defines the corresponding display.
     - Examples:
@@ -45,7 +45,7 @@ The purpose of this script is to emulate the 7 segment LED display panel.
 
 - Control characters table
 
-|      | CH1 | CH2 |
+|      | Ch1 | Ch2 |
 |------|-----|-----|
 | ADC1 | [   | ]   |
 | ADC2 | (   | )   |
