@@ -1,2 +1,5 @@
 # Python_code_snippets
-Python code snippets.
+- MBOX_reader
+- PythonPackagesValidatorCentOS
+- STM32_Flasher
+- seven_segment_display
