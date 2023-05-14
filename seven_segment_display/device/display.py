@@ -9,6 +9,7 @@ Created on Dec 12, 2021
 import sys
 import time
 import tkinter as tk
+from typing import Callable
 
 from more_itertools import nth
 
@@ -27,7 +28,7 @@ class DisplayBase:
     given as OFFSETS from top left measured in digit lengths.
     """
 
-    def __init__(self, canvas: tk.Canvas, colors) -> None:
+    def __init__(self, canvas: tk.Canvas, colors: list) -> None:
         self.__canvas = canvas
         self.__colors = colors
 
@@ -254,7 +255,7 @@ class DisplayBase:
         positive_numbers()
         negative_numbers()
 
-    def display_content(self, ch_val, zero_ch_lst) -> None:
+    def display_content(self, ch_val: bytes, zero_ch_lst: list) -> None:
         """
         DisplayBase content (messages/number) on eight four number displays.
 
@@ -274,7 +275,7 @@ class DisplayBase:
             Write on graphic.
             """
 
-            def channels(idx, chan) -> None:
+            def channels(idx: int, chan: bytes) -> None:
                 """
                 Assign channels.
                 """
@@ -305,7 +306,8 @@ class DisplayBase:
 
         write()
 
-    def update_numbers(self, root: tk.Tk, data_generator, time_ms) -> None:
+    def update_numbers(self, root: tk.Tk, data_generator: Callable,
+                       time_ms: int) -> None:
         """
         Update numbers.
         """
@@ -369,7 +371,8 @@ class Display:
 
     # No need for more public methods.
     # pylint: disable=too-few-public-methods
-    def __init__(self, title, axis_titles, colors, data_generator) -> None:
+    def __init__(self, title: str, axis_titles: list, colors: list,
+                 data_generator: Callable) -> None:
         self.__title = title
         self.__axis_titles = axis_titles
         self.__colors = colors
@@ -385,7 +388,7 @@ class Display:
         #  Number is 4 digits.
         self.display_obj = DisplayBase(self.canvas_obj.canvas, self.__colors)
 
-    def run(self, time_ms):
+    def run(self, time_ms: int):
         """
         Run device.
         """

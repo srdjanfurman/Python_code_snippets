@@ -22,7 +22,7 @@ def handler(signum, frame):
     sys.exit(0)
 
 
-def main():
+def main() -> None:
     """Main function"""
 
     display_title = 'ADC Status'

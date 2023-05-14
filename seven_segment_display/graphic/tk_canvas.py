@@ -18,7 +18,7 @@ class TkCanvas:
 
     # No need for public methods.
     # pylint: disable=too-few-public-methods
-    def __init__(self, root: tk.Tk, axis_titles) -> None:
+    def __init__(self, root: tk.Tk, axis_titles: list) -> None:
         self.__axis_titles = axis_titles
 
         self.canvas = tk.Canvas(root, width=1110, height=980, bg='black')
