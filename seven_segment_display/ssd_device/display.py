@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-""" Display """
+""" Seven-segment display """
 
 import sys
 import time
@@ -362,8 +362,8 @@ class DisplayBase:
         return number
 
 
-class Display:
-    """Display class"""
+class SSDisplay:
+    """SSDisplay class"""
 
     # No need for more public methods.
     # pylint: disable=too-few-public-methods
@@ -386,7 +386,7 @@ class Display:
 
     def run(self, time_ms: int):
         """
-        Run device.
+        Run ssd_device.
         """
 
         self.root_obj.root.after(time_ms, self.display_obj.update_numbers(

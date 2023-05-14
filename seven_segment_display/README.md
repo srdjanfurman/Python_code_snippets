@@ -1,12 +1,12 @@
-# Emulator of the seven segment LED display panel
+# Emulator of the seven-segment LED display panel
 
 ## Description
 
-The purpose of this script is to emulate the seven segment LED display panel.
+The purpose of this script is to emulate the seven-segment LED display panel.
 
 ## Explanation
 
-- The seven segment LED display panel contains eight 4-digit displays.
+- The seven-segment LED display panel contains eight 4-digit displays.
 
 - Panel displays table example
 
@@ -69,5 +69,5 @@ The purpose of this script is to emulate the seven segment LED display panel.
 ### Pylint arguments
 
 ```
---msg-template={abspath}:{line}:{column}:{C}:({symbol}){msg} common device graphic run tests setup.py
+--msg-template={abspath}:{line}:{column}:{C}:({symbol}){msg} common ssd_device graphic run tests setup.py
 ```

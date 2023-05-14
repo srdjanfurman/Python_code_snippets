@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on Dec 12, 2021
-
-@author: furman
+Unit tests
 
 Run unittests and check unittest coverage:
     seven_segment_display$
         coverage run -m unittest tests/unit_tests.py && coverage report -m
-
 """
 
 import io
@@ -18,9 +15,9 @@ from contextlib import redirect_stdout
 from common.data import digits_data, numbers_data
 from common.utils import generate_test_data, generate_test_data_fixed, \
     generate_test_data_dyn
-from device.display import DisplayBase
 from graphic.tk_canvas import TkCanvas
 from graphic.tk_root import TkRoot
+from ssd_device.display import DisplayBase
 
 
 class TestTkRoot(unittest.TestCase):
@@ -106,7 +103,6 @@ class TestDisplayClass(unittest.TestCase):
         except ValueError as val_err:
             self.assertIsInstance(val_err, ValueError)
 
-        # self.device.display_content(b'XXXX', [])
         self.display.display_content(b'[99', [])
         self.display.display_content(b'[100', [])
         self.display.display_content(b'[1000', [])

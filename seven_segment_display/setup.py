@@ -30,7 +30,7 @@ setup(
     name='seven_segment_display',
     version='1.0.0',
 
-    packages=find_packages(include=['common', 'graphic', 'device'],
+    packages=find_packages(include=['common', 'graphic', 'ssd_device'],
                            exclude=['*run*', '*tests*']),
 
     url='',

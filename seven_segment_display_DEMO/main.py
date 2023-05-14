@@ -2,7 +2,7 @@
 
 """ Main """
 
-from device.display import Display
+from ssd_device.display import SSDisplay
 from serial.serialutil import SerialException
 
 from const.consts import DEV
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         display_setting = (DISPLAY_TITLE, display_axis_titles, display_colors,
                            data_generator_callable)
 
-        display = Display(*display_setting)
+        display = SSDisplay(*display_setting)
 
         display.run(1)
 
