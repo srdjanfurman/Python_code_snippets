@@ -29,7 +29,7 @@ def main():
 
     # The first four elements are the y-axis titles.
     # The last elements two are the x-axis titles.
-    display_axis_titles = ['ADC1:', 'ADC2:', 'ADC3:', 'ADC4:', 'CH1:', 'CH2:']
+    display_axis_titles = ['Val1:', 'Val2:', 'Val3:', 'Val4:', 'Ch1:', 'Ch2:']
 
     # Display colors per row.
     display_colors = ['red', 'green', 'blue', 'yellow']
