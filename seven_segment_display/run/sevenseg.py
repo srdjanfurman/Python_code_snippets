@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-Created on Dec 12, 2021
-
-@author: furman
-
-Emulator of the 7 segment LED display.
-"""
+""" Seven segment test run """
 
 import signal
 import sys
@@ -34,15 +28,16 @@ def main() -> None:
     # Display colors per row.
     display_colors = ['red', 'green', 'blue', 'yellow']
 
-    # Display setting altogether.
-    display_setting = (display_title, display_axis_titles, display_colors)
-
     # Function generate_test_data is provided for the testing purpose.
     data_generator_callable = generate_test_data_fixed
 
+    # Display setting altogether.
+    display_setting = (display_title, display_axis_titles, display_colors,
+                       data_generator_callable)
+
     # NOTE: Display setting can be a JSON file, e.g. config.json.
 
-    display = Display(*display_setting, data_generator_callable)
+    display = Display(*display_setting)
 
     display.run(100)
 

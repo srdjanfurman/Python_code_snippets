@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-Created on Dec 12, 2021
-
-@author: furman
-"""
+""" Constants """
 
 # Counter speed.
 DISP_SPEED = 0.1

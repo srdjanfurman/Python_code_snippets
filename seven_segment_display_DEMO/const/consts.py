@@ -1,3 +1,6 @@
 # -*- coding: utf-8 -*-
 
-DEV = '/dev/pts/5'
+""" Constants """
+
+DEV = '/dev/pts/7'
+CHs = [b'[', b']', b'(', b')', b'{', b'}', b';', b':']

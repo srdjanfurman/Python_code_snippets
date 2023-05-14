@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 
-"""
-Created on Dec 12, 2021
-
-@author: furman
-"""
+""" Serial device """
 
 import sys
 
 from serial import Serial
 from serial.serialutil import SerialException
 
-from common import const
+from const.consts import CHs
 
 
 class SerialDevice:
@@ -77,7 +73,7 @@ class SerialDevice:
         while self.serial_device.in_waiting > 0:  # Do not block.
             char = self.serial_device.read()
 
-            if char in const.CHs:  # Wait for the control character (start reception).
+            if char in CHs:  # Wait for the control character (start reception).
 
                 ctrl_char = char
                 out += ctrl_char

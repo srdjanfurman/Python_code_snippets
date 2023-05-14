@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
+    Setup
+
     Virtual environment activation:
         [sfurman@localhost seven_segment_display]$ source ~/Py_3.8_env/bin/activate
 

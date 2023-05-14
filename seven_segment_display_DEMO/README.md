@@ -94,3 +94,9 @@ The purpose of this script is to emulate the seven segment LED display panel.
 
 - Open Terminal and run: ```./run_data_dyn.sh```
 - Run main program: ```python main.py```
+
+### Pylint arguments
+
+```
+--msg-template={abspath}:{line}:{column}:{C}:({symbol}){msg} const ser main.py virtual_serial.py
+```

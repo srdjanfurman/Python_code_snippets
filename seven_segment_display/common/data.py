@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-Created on Dec 12, 2021
-
-@author: furman
-"""
+""" Data """
 
 digits_data = [
     [7, 39, 71, 103, 135, 167, 199], [8, 40, 72, 104, 136, 168, 200],

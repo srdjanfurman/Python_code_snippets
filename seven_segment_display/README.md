@@ -65,3 +65,9 @@ The purpose of this script is to emulate the seven segment LED display panel.
 
 - Run main program: ```python run/sevenseg.py```
     - Demo will start immediately.
+
+### Pylint arguments
+
+```
+--msg-template={abspath}:{line}:{column}:{C}:({symbol}){msg} common device graphic run tests setup.py
+```

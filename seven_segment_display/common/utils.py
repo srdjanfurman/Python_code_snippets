@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
-Created on Dec 12, 2021
-
-@author: furman
-"""
+""" Utils """
 
 from common.const import START, STOP, STEP, DATA
 
