@@ -3,3 +3,4 @@
 - PythonPackagesValidatorCentOS
 - STM32_Flasher
 - seven_segment_display
+- seven_segment_display_DEMO
